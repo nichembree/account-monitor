@@ -1,0 +1,100 @@
+# Target accounts to monitor.
+# name: used for news search queries (keep it specific enough to avoid noise)
+# public: true if the company files with the SEC (enables EDGAR filing checks)
+# aliases: optional extra search terms (subsidiaries, former names, tickers)
+
+accounts:
+  - name: Targa Resources
+    public: true
+  - name: EOG Resources
+    public: true
+  - name: HF Sinclair
+    public: true
+  - name: Plains All American
+    public: true
+  - name: Gibson Energy
+    public: true
+  - name: Expand Energy
+    public: true
+  - name: Diamondback Energy
+    public: true
+  - name: Keyera
+    public: true
+  - name: Talos Energy
+    public: true
+  - name: Berkshire Hathaway Energy
+    public: false
+  - name: Inter Pipeline
+    public: false
+  - name: Buckeye Partners
+    public: false
+  - name: Murphy Oil
+    public: true
+  - name: Alyeska Pipeline
+    public: false
+  - name: Suncor Energy
+    public: true
+  - name: Marathon Petroleum
+    public: true
+  - name: Energy Transfer
+    public: true
+  - name: Boardwalk Pipelines
+    public: false
+  - name: Phillips 66
+    public: true
+  - name: Crescent Energy
+    public: true
+  - name: Liberty Energy
+    public: true
+  - name: Martin Midstream Partners
+    public: true
+  - name: Ranger Energy Services
+    public: true
+  - name: KLX Energy Services
+    public: true
+  - name: ONEOK
+    public: true
+  - name: Williams Companies
+    public: true
+  - name: Western Midstream Partners
+    public: true
+  - name: Loop LLC
+    public: false
+  - name: Southern Star Central Gas Pipeline
+    public: false
+  - name: Enterprise Products Partners
+    public: true
+  - name: Kinder Morgan
+    public: true
+  - name: Odfjell
+    public: false
+  - name: BKV Corporation
+    public: true
+  - name: Transocean
+    public: true
+  - name: CVR Energy
+    public: true
+  - name: BP
+    public: true
+  - name: Chevron
+    public: true
+  - name: Arlanxeo
+    public: false
+  - name: Saudi Aramco
+    public: true
+  - name: Hunt Oil
+    public: false
+  - name: Enbridge
+    public: true
+  - name: ATCO
+    public: true
+  - name: Athabasca Oil
+    public: true
+  - name: MEG Energy
+    public: true
+  - name: Cenovus Energy
+    public: true
+  - name: Strathcona Resources
+    public: true
+  - name: Canadian Natural Resources
+    public: true
