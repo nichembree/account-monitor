@@ -10,6 +10,7 @@ import yaml
 from src.fetch_news import fetch_news_for_account
 from src.fetch_edgar import fetch_filings_for_account
 from src.build_digest import build_digest
+from src.summarize import summarize_account
 from src.generate_dashboard import generate_dashboard
 from src.send_email import send_digest_email
 
@@ -50,6 +51,10 @@ def main():
 
     digest = build_digest(all_news, all_filings)
     print(f"Found activity for {len(digest)} accounts.")
+
+    print("Summarizing...")
+    for acct, entry in digest.items():
+        entry["summary"] = summarize_account(acct, entry["news"], entry["filings"])
 
     path = generate_dashboard(digest)
     print(f"Dashboard written to {path}")
