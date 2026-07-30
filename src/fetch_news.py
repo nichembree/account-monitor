@@ -37,6 +37,7 @@ def fetch_news_for_account(name: str, lookback_days: int = 1):
             "link": entry.link,
             "source": source,
             "published": published.isoformat(),
+            "snippet": entry.get("summary", ""),
         })
 
     return results
