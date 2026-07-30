@@ -22,6 +22,9 @@ def _plaintext_summary(digest):
     for acct, entry in sorted(digest.items()):
         lines.append(f"\n{acct}")
         lines.append("-" * len(acct))
+        if entry.get("summary"):
+            lines.append(entry["summary"])
+            lines.append("")
         for f in entry["filings"]:
             lines.append(f"  [SEC {f.get('form','')}] {f['title']} — {f['link']}")
         for n in entry["news"]:
