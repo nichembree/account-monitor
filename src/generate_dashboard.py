@@ -1,4 +1,5 @@
 """Render the digest into a static index.html for GitHub Pages."""
+import os
 from datetime import datetime
 
 TEMPLATE = """<!DOCTYPE html>
@@ -20,6 +21,9 @@ TEMPLATE = """<!DOCTYPE html>
   .tag {{ display: inline-block; background: #edf2f7; color: #444; font-size: 11px;
           padding: 1px 6px; border-radius: 4px; margin-right: 6px; }}
   .empty {{ color: #888; font-style: italic; }}
+  .summary {{ font-size: 14px; line-height: 1.5; margin: 0 0 10px 0; color: #222; }}
+  details {{ margin-top: 4px; }}
+  summary {{ cursor: pointer; font-size: 12px; color: #2b6cb0; }}
 </style>
 </head>
 <body>
@@ -39,6 +43,12 @@ ACCOUNT_TEMPLATE = """
 
 
 def _render_items(digest_entry):
+    parts = []
+
+    summary = digest_entry.get("summary")
+    if summary:
+        parts.append(f'<p class="summary">{summary}</p>')
+
     rows = []
     for f in digest_entry["filings"]:
         rows.append(
@@ -52,7 +62,13 @@ def _render_items(digest_entry):
             f'<a href="{n["link"]}" target="_blank">{n["title"]}</a> '
             f'<div class="meta">{n.get("source","")} — {n.get("published","")[:10]}</div></div>'
         )
-    return "\n".join(rows)
+
+    if rows:
+        parts.append(
+            f'<details><summary>Show {len(rows)} source link(s)</summary>{"".join(rows)}</details>'
+        )
+
+    return "\n".join(parts)
 
 
 def generate_dashboard(digest, output_path="docs/index.html"):
@@ -68,6 +84,7 @@ def generate_dashboard(digest, output_path="docs/index.html"):
 
     html = TEMPLATE.format(date=date_str, body=body)
 
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     with open(output_path, "w") as f:
         f.write(html)
 
