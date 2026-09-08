@@ -1,8 +1,7 @@
 name: Daily Account Digest
 
 on:
-  schedule:
-    - cron: "0 11 * * *"
+
   workflow_dispatch: {}
 
 permissions:
